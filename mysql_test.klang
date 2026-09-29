@@ -1,0 +1,30 @@
+// KLANG MySQL Live Server Script
+// Configure your MySQL credentials below:
+let host = "127.0.0.1";
+let user = "root";
+let password = "";
+let dbName = "test";
+let port = 3306;
+
+print "Connecting to MySQL server at " + host + ":" + port + "...";
+let db = mysql_connect(host, user, password, dbName, port);
+
+if (db > 0) {
+    print "Connected! Executing queries...";
+
+    // 1. Create table
+    mysql_execute(db, "CREATE TABLE IF NOT EXISTS klang_users (id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(50), balance INT);");
+
+    // 2. Insert records
+    mysql_execute(db, "INSERT INTO klang_users (username, balance) VALUES ('Alice', 500);");
+    mysql_execute(db, "INSERT INTO klang_users (username, balance) VALUES ('Bob', 350);");
+
+    // 3. Query and display table
+    print mysql_query(db, "SELECT * FROM klang_users;");
+
+    // 4. Close connection
+    mysql_close(db);
+    print "MySQL session closed.";
+} else {
+    print "Notice: Make sure your MySQL service (e.g. XAMPP / MariaDB / MySQL) is running on " + host + ":" + port;
+}

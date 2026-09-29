@@ -1,0 +1,53 @@
+// ============================================
+// KLANG Program: Control Flow & Database Demo
+// ============================================
+
+print "----------------------------------------";
+print "Welcome to KLANG Script Execution!";
+print "----------------------------------------";
+
+// 1. Variables and Arithmetic
+let basePrice = 50;
+let taxRate = 10;
+let total = basePrice + (basePrice * taxRate / 100);
+
+print "Base Price: " + basePrice;
+print "Total with Tax: " + total;
+
+// 2. Conditional Logic (If / Else)
+if (total > 50) {
+    print "Status: Premium Order";
+} else {
+    print "Status: Standard Order";
+}
+
+// 3. While Loop Simulation
+print "\nGenerating Order Items (While Loop):";
+let item = 1;
+while (item <= 3) {
+    print "  -> Processing Item #" + item;
+    item = item + 1;
+}
+
+// 4. For Loop Simulation
+print "\nProcessing Discount Tiers (For Loop):";
+for (let tier = 1; tier <= 3; tier++) {
+    let discount = tier * 5;
+    print "  -> Tier " + tier + ": " + discount + "% discount applied";
+}
+
+// 4. Database Sandbox / MySQL Demo
+print "\nConnecting to Database...";
+let db = mock_db_connect("ecommerce");
+
+mysql_execute(db, "CREATE TABLE orders (id INT, item_name VARCHAR(100), amount INT);");
+mysql_execute(db, "INSERT INTO orders VALUES (101, 'Laptop Sleeve', 25);");
+mysql_execute(db, "INSERT INTO orders VALUES (102, 'Mechanical Keyboard', 85);");
+mysql_execute(db, "INSERT INTO orders VALUES (103, 'USB-C Dock', 60);");
+
+print "\nQuerying Orders Table:";
+print mysql_query(db, "SELECT * FROM orders;");
+
+mysql_close(db);
+
+print "KLANG script execution complete!";

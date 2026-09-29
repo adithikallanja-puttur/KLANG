@@ -1,0 +1,60 @@
+// Test 1: Standard C-style for loop with i++
+print "--- Test 1: Standard with i++ ---";
+for (let i = 0; i < 5; i++) {
+    print "i = " + i;
+}
+
+// Test 2: Decrement with i--
+print "\n--- Test 2: Decrement with i-- ---";
+for (let j = 5; j > 0; j--) {
+    print "j = " + j;
+}
+
+// Test 3: Compound assignment with +=
+print "\n--- Test 3: Step with += 2 ---";
+for (let k = 0; k <= 10; k += 2) {
+    print "k = " + k;
+}
+
+// Test 4: Break and Continue
+print "\n--- Test 4: Break & Continue ---";
+for (let n = 1; n <= 10; n++) {
+    if (n == 3) {
+        continue;
+    }
+    if (n > 6) {
+        break;
+    }
+    print "n = " + n;
+}
+
+// Test 5: Optional parentheses: for let i = 0; i < 3; i++
+print "\n--- Test 5: Without parentheses ---";
+for let m = 1; m <= 3; m++ {
+    print "m = " + m;
+}
+
+// Test 6: Pre-existing variable modified in loop
+print "\n--- Test 6: Existing variable ---";
+let existing = 100;
+for (existing = 0; existing < 3; existing++) {
+    print "existing = " + existing;
+}
+print "After loop: " + existing;
+
+// Test 7: Nested for loops
+print "\n--- Test 7: Nested loops (grid) ---";
+for (let row = 1; row <= 3; row++) {
+    let rowStr = "Row " + row + ": ";
+    for (let col = 1; col <= 3; col++) {
+        rowStr = rowStr + "[" + (row * col) + "] ";
+    }
+    print rowStr;
+}
+
+// Test 8: Empty clauses (e.g. for (; count < 3; count++))
+print "\n--- Test 8: Omitted initializer ---";
+let count = 0;
+for (; count < 3; count++) {
+    print "count = " + count;
+}
